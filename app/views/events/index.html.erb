@@ -1,0 +1,13 @@
+<h1>Events</h1>
+<ul>
+  <% @events.each do |event| %>
+    <li>
+      <%=event.venue.name %>, 
+      <% event.artists.each do |artist| %>
+        <%=artist.name %> 
+        <% end %>
+      <%=event.datetime_local%>
+    </li>
+      <%end%>
+</ul>
+<p>Find me in app/views/events/index.html.erb</p>

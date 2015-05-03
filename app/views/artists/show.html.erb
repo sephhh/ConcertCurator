@@ -1,0 +1,10 @@
+<h1><%= @artist.name %></h1>
+<h2>Upcoming Events</h2>
+<ul>
+  <% @artist.events.each do |event| %>
+    <li>
+      <%=event.venue.name %>, 
+      <%=event.datetime_local%>
+    </li>
+  <% end %>
+</ul>

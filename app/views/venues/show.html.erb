@@ -1,0 +1,10 @@
+<h1><%= @venue.name %></h1>
+<h2>Upcoming Events</h2>
+<ul>
+  <% @venue.events.each do |event| %>
+    <li>
+      <%=event.title %>, 
+      <%=event.datetime_local%>
+    </li>
+  <% end %>
+</ul>
