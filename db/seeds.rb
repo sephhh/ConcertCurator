@@ -25,13 +25,17 @@ def create_event(event_hash)
 end
 
 def create_artist(artist_hash)
-  Artist.create(event_count: artist_hash["stats"]["event_count"],
+  artist = Artist.find_or_create_by(seat_geek_id: artist_hash["id"])
+  Artist.update(artist.id, 
+    event_count: artist_hash["stats"]["event_count"],
     name: artist_hash["name"],
-    seat_geek_id: artist_hash["id"])
+    )
 end
 
 def create_venue(venue_hash)
-  Venue.create(city: venue_hash["city"],
+  venue = Venue.find_or_create_by(seat_geek_id: venue_hash["id"])
+  Venue.update(venue.id,
+    city: venue_hash["city"],
     name: venue_hash["name"],
     extended_address: venue_hash["extended_address"],
     display_location: venue_hash["display_location"],
@@ -40,7 +44,7 @@ def create_venue(venue_hash)
     longitude: venue_hash["location"]["lon"],
     latitude: venue_hash["location"]["lat"],
     address: venue_hash["address"],
-    seat_geek_id: venue_hash["id"])
+    )
 end
 
 def create_genre(name)
@@ -50,6 +54,8 @@ end
 
 hash["events"].each do |event_hash|
   new_event = create_event(event_hash)
+
+
   new_venue = create_venue(event_hash["venue"]) 
   new_event.venue = new_venue
   new_venue.save
