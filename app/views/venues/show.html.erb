@@ -1,5 +1,10 @@
 <h1><%= @venue.name %></h1>
+
+<%= @venue.address %>
+<%= @venue.extended_address %>
+
 <h2>Upcoming Events</h2>
+
 <ul>
   <% @venue.events.each do |event| %>
     <li>

@@ -1,0 +1,15 @@
+<h1>WELCOME</h1>
+
+<h2><%= link_to "Here are a bunch of shows", '/events' %></h2>
+
+<%= form_tag ("/events/random") do %>
+<%= submit_tag("Give me a random show") %>
+<% end %>
+
+<% if @submitted %>
+
+<%= render partial: "event_details" %>
+
+<div> MORE BUTTONS HERE</div>
+
+<% end%>

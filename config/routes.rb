@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # get 'events/index'
 
   # get 'events/show'
+  root 'events#home'
+
+  post 'events/random' => 'events#random'
 
   resources :events, only: [:index, :show]
   resources :venues, only: [:index, :show]

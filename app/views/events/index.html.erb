@@ -1,13 +1,15 @@
 <h1>Events</h1>
-<ul>
   <% @events.each do |event| %>
-    <li>
-      <%=event.venue.name %>, 
+    <div class="event-listing">
+     
+      <strong><%= link_to event.venue.name, event.venue %></strong>, 
       <% event.artists.each do |artist| %>
-        <%=artist.name %> 
+        <%=link_to artist.name, artist %>
         <% end %>
-      <%=event.datetime_local%>
-    </li>
-      <%end%>
-</ul>
-<p>Find me in app/views/events/index.html.erb</p>
+      <%= event.venue.display_location%>
+      <%=event.pretty_date%>
+      <%=link_to "More info", event %>
+
+    
+    </div>
+  <%end%>

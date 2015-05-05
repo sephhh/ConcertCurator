@@ -1,0 +1,23 @@
+<h1><%= @event.title %></h1>
+
+<%=@event.pretty_date%>
+
+<% if @event.average_price %>
+<div class="price"><%= number_to_currency(@event.average_price)%></div>
+<% end %>
+
+<h3>Artists:</h3>
+<ul>
+<% @event.artists.each do |artist| %>
+    <li><%=link_to artist.name, artist %></li>
+<% end %>
+
+</ul>
+
+
+
+<h3>Venue:</h3> 
+<strong><%= link_to @event.venue.name, @event.venue %></strong>
+<%= @event.venue.address%>
+<%= @event.venue.extended_address%>
+  
