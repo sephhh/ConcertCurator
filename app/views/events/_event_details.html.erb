@@ -9,7 +9,7 @@
 <h3>Artists:</h3>
 <ul>
 <% @event.artists.each do |artist| %>
-    <li><%=link_to artist.name, artist %></li>
+    <li><%=link_to artist.name, artist %> <%= artist.genres.collect {|genre| genre.name} %></li>
 <% end %>
 
 </ul>
