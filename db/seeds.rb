@@ -9,10 +9,6 @@
 require 'open-uri'
 require 'pry'
 
-BASE_URL = "http://api.seatgeek.com/2/events"
-QUERY = "?geoip=true&per_page=100&range=25mi&page=1&taxonomies.name=concert"
-
-hash = JSON.load(open(BASE_URL+QUERY))
 
 def create_event(event_hash)
   Event.create(seat_geek_id: event_hash["id"], 
@@ -52,25 +48,39 @@ def create_genre(name)
 end
 
 
-hash["events"].each do |event_hash|
-  new_event = create_event(event_hash)
+
+base_url = "http://api.seatgeek.com/2/events"
+query = "?geoip=true&per_page=100&range=25mi&taxonomies.name=concert"
+
+def seed(base_url, query, page)
+  page_string = "&page=#{page}"
+  hash = JSON.load(open(base_url+query+page_string))
+
+  hash["events"].each do |event_hash|
+    new_event = create_event(event_hash)
 
 
-  new_venue = create_venue(event_hash["venue"]) 
-  new_event.venue = new_venue
-  new_venue.save
-  new_event.save
-  event_hash["performers"].each do |artist|
-    new_artist = create_artist(artist)
-    new_event.artists << new_artist
-    # associate events and artists
-    if artist["genres"]
-      artist["genres"].each do |genre|
-        new_artist.genres << create_genre(genre["name"])
-        #associate genres and artists
+    new_venue = create_venue(event_hash["venue"]) 
+    new_event.venue = new_venue
+    new_venue.save
+    new_event.save
+    event_hash["performers"].each do |artist|
+      new_artist = create_artist(artist)
+      new_event.artists << new_artist
+      # associate events and artists
+      if artist["genres"]
+        artist["genres"].each do |genre|
+          new_artist.genres << create_genre(genre["name"])
+          #associate genres and artists
+        end
       end
     end
   end
+end
+
+5.times do |i|
+  seed(base_url, query, i+1)
+  puts "done with page #{i}"
 end
 
 

@@ -1,15 +1,11 @@
 <h1>Events</h1>
-  <% @events.each do |event| %>
-    <div class="event-listing">
-     
-      <strong><%= link_to event.venue.name, event.venue %></strong>, 
-      <% event.artists.each do |artist| %>
-        <%=link_to artist.name, artist %>
-        <% end %>
-      <%= event.venue.display_location%>
-      <%=event.pretty_date%>
-      <%=link_to "More info", event %>
 
-    
-    </div>
-  <%end%>
+<% @events.group_by(&:week).each do |week, week_events| %>
+  <div id="week">
+    <h2>Week <%= week %></h2>
+      <% week_events.group_by(&:day).each do |day, day_events| %>
+      <h3>Day <%= day %></h3>
+      <%= render :partial => 'event', :collection => day_events %>
+    <% end %>
+  </div>
+<% end %>

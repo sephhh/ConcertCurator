@@ -1,0 +1,13 @@
+<div class="event-listing">
+     
+
+      <strong><%= link_to event.venue.name, event.venue %></strong>, 
+      <% event.artists.each do |artist| %>
+        <%=link_to artist.name, artist %>
+        <% end %>
+      <%= event.venue.display_location%>
+      <%=event.pretty_date%>
+      <%=link_to "More info", event %>
+
+    
+</div>

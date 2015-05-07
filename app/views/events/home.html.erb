@@ -2,6 +2,8 @@
 
 <h2><%= link_to "Here are a bunch of shows", '/events' %></h2>
 
+<h3><%= link_to "Shows this week", 'events/week/1' %></h3>
+
 <%= form_tag ("/events/random") do %>
 <%= submit_tag("Give me a random show") %>
 <% end %>

@@ -17,4 +17,6 @@ class EventsController < ApplicationController
     render 'home'
   end
 
+
+
 end
