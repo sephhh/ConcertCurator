@@ -58,5 +58,20 @@ class Event < ActiveRecord::Base
     self.datetime_local.strftime('%d')
   end
 
+  def has_genres?
+    self.artists.any? do |artist| 
+      !(artist.genres.empty?) 
+    end
+  end
+
+  def self.find_similar_shows(genre_ids)
+    self.select do |event|
+      event.artists.any? do |artist|
+        genre_ids & artist.genres.pluck(:id) != []
+      end
+    end
+  end
+
+
 
 end

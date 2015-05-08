@@ -6,10 +6,6 @@
 <%= submit_tag("Give me a random show") %>
 <% end %>
 
-<% if @submitted %>
-
-<%= render partial: "event_details" %>
-
 <div> 
   <%= form_tag ("/events/random") do %>
   <%= submit_tag("Under 20 bucks") %>
@@ -21,5 +17,21 @@
   <%= submit_tag("TONIGHT!!!") %>
   <% end %>
 </div>
+
+<% if @has_genres %>
+  <div> 
+    <%= form_tag ("/events/random") do %>
+    <% @genre_ids.each do |id| %>
+      <%= hidden_field_tag "genre_ids[]", id %>
+    <% end %> 
+
+    <%= submit_tag("Similar show") %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @submitted %>
+
+<%= render partial: "event_details" %>
 
 <% end%>

@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
   <title>TestProject</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+  </style>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH_ULMQ-Ext0_W8cBvL9yo02sVZ7VpyBA&sensor=false"></script>
+
 </head>
 <body>
 
 <%= yield %>
+
+  <div id="map-canvas" dir="rtl"></div>
 
 </body>
 </html>
