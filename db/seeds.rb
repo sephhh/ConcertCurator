@@ -44,7 +44,7 @@ def create_venue(venue_hash)
 end
 
 def create_genre(name)
-  Genre.create(name: name)
+  Genre.find_or_create_by(name: name)
 end
 
 
@@ -70,7 +70,8 @@ def seed(base_url, query, page)
       # associate events and artists
       if artist["genres"]
         artist["genres"].each do |genre|
-          new_artist.genres << create_genre(genre["name"])
+          new_genre = create_genre(genre["name"])
+          new_artist.genres << new_genre unless new_artist.genres.include?(new_genre)
           #associate genres and artists
         end
       end
@@ -78,7 +79,7 @@ def seed(base_url, query, page)
   end
 end
 
-5.times do |i|
+10.times do |i|
   seed(base_url, query, i+1)
   puts "done with page #{i}"
 end

@@ -8,8 +8,8 @@
 <ul>
   <% @venue.events.each do |event| %>
     <li>
-      <%=event.title %>, 
-      <%=event.datetime_local%>
+      <%=link_to event.title, event %>, 
+      <%=event.pretty_date%>
     </li>
   <% end %>
 </ul>

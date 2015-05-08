@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # get 'events/show'
   root 'events#home'
 
+  get 'events/random' => 'events#random'
+
   post 'events/random' => 'events#random'
 
   resources :events, only: [:index, :show]

@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
 
   def pretty_date
     
-    self.datetime_local.to_formatted_s(:long_ordinal)
+    self.datetime_local.strftime("%A, %d %b %Y %l:%M %p")
     # self.datetime_local.strftime("%A, %d %b %Y %l:%M %p")
 
     # time = Time.now                     # => Thu Jan 18 06:10:17 CST 2007
