@@ -6,11 +6,11 @@
 
 
 <div id="main-container" class="container-fluid">
-<% @events.group_by(&:week).each do |week, week_events| %>
+<% @events.group_by(&:week).sort.each do |week, week_events| %>
   <div id="week">
-    <h2> Week <%= week %> </h2>
-      <% week_events.group_by(&:day).each do |day, day_events| %>
-      <h3>Day <%= day %></h3>
+    <h2> Week of <%= (week_events.first.datetime_local).strftime('%b %d')%> to <%= (week_events.last.datetime_local).strftime('%b %d')%></h2>
+      <% week_events.group_by(&:day).sort.each do |day, day_events| %>
+      <h3><%= day_events.first.datetime_local.strftime('%b %d') %></h3>
       <%= render :partial => 'event', :collection => day_events %>
     <% end %>
   </div>

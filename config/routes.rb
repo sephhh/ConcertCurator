@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   post 'events/random' => 'events#random'
 
+  get 'events/list' => 'events#list'
+
+  post 'events/list' => 'events#list'
+
   resources :events, only: [:index, :show]
   resources :venues, only: [:index, :show]
   resources :artists, only: [:index, :show]

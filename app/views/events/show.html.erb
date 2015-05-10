@@ -1,1 +1,29 @@
 <%= render partial: "event_details" %>
+
+<script>
+// After the API loads, call a function to enable the search box.
+// function handleAPILoaded() {
+//   $('#search-button').attr('disabled', false);
+// }
+
+// Search for a specified string.
+/*
+function search() {
+  var q = $(<%= @event.artists.first.name %> ).val();
+  var request = gapi.client.youtube.search.list({
+    q: q,
+    part: 'snippet',
+    maxResults: 10
+
+  });
+
+  request.execute(function(response) {
+    var str = JSON.stringify(response.result);
+  });
+}
+*/
+</script>
+
+<!-- https://www.googleapis.com/youtube/v3/search?part=snippet&q=Holly+Near&maxResults=50&key=AIzaSyAH_ULMQ-Ext0_W8cBvL9yo02sVZ7VpyBA -->
+<% artist = @event.artists.first %>
+<%= artist.embed(artist.find_id) %>

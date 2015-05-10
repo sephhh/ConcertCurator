@@ -10,6 +10,20 @@ class EventsController < ApplicationController
   def home
   end
 
+  def list
+    if params["commit"] == "List By Genre"
+      @events = Event.find_similar_shows(params["genre"])
+    elsif params["commit"] == "List By Week"
+      # binding.pry
+      @events = Event.week_of(*params["week"].split("SPLITHERE"))
+    end
+
+
+    render 'events/index'
+  end
+
+
+
   def random
 
   if params["commit"] == "Under 20 bucks"
@@ -21,7 +35,7 @@ class EventsController < ApplicationController
     @event = tonight_events.sample
   elsif params["commit"] == "Similar show"
     genre_ids = params["genre_ids"].collect {|genre_id| genre_id.to_i}
-    similar_shows = Event.find_similar_shows(genre_ids)
+    similar_shows = Event.find_similar_shows(genre_ids.sample)
     @event = similar_shows.sample
   else 
     # if params["commit"] == "Give me a random show"

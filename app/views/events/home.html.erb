@@ -35,12 +35,35 @@
     </div>
     </div>
 
+  <div class="col-xs-3">
+    <%= form_tag ("/events/list") do %>
+      <%= select_tag(:genre, options_for_select(Genre.select_options)) %>
+      <%= submit_tag "List By Genre", :class => 'btn btn-success'  %>
+    <% end %>
+  </div>
+  <div class="col-xs-3">
+    <%= form_tag ("/events/list") do %>
+      <%= select_tag(:week, options_for_select(Event.week_select_options)) %>
+      <%= submit_tag "List By Week", :class => 'btn btn-success'  %>
+    <% end %>
+  </div>
+  <div class="col-xs-3">
+      <%= link_to "List Artists", artists_path, :class => 'btn btn-success'  %>
+  </div>
+
+  <div class="col-xs-3">
+      <%= link_to "List Venues", venues_path, :class => 'btn btn-success'  %>
+  </div>
+
+
   <div class="container text-center">
     <div class="row">
       <div class="col-xs-12">
         <h2><%= link_to "A WHOLE BUNCH OF UPCOMING EVENTS", '/events', class: 'btn btn-default btn-lg btn-block' %></h2>
       </div>
     </div>
+
+
 
     <p></p>
 
