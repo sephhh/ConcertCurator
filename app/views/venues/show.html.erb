@@ -23,15 +23,17 @@
 <ul>
   <% @venue.events.each do |event| %>
     <li>
-      <%=link_to event.title, event %>, 
+      <%=link_to event.title, event %>,
       <%=event.pretty_date%>
     </li>
   <% end %>
 </ul>
 
 
+
+
   <script>
-     var ready = function initialize() {
+     function initialize() {
         var myLatlng = new google.maps.LatLng(<%= @venue.latitude %>,<%= @venue.longitude%>);
         var my_venue = "<%= @venue.name %>"
         var mapOptions = {
@@ -40,7 +42,6 @@
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-      
 
         var marker = new google.maps.Marker({
         position: myLatlng,
@@ -50,13 +51,18 @@
 
       }
 
-      // google.maps.event.addDomListener(window, 'load', initialize);
-
-    $(document).ready(ready)
-    $(document).on('page:load', ready)
+    google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'page:load', initialize);
+    // google.maps.event.addDomListener(window, 'load', alert("hello"));
+    // $(document).ready(ready)
+    // $(document).on('page:load', ready)
   </script>
 </div>
 
+<div id="map-canvas"></div>
+
 </html>
+
+
 
 
