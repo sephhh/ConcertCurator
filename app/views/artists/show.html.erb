@@ -1,15 +1,13 @@
 <div class="text-center">
   <h1><%= @artist.name %></h1>
+  <h4><%=@artist.pretty_genres%></h4>
 </div>
+
 
 <div id="main-container" class="container-fluid">
   <h2>Upcoming Events</h2>
-  <ul>
-    <% @artist.events.each do |event| %>
-      <li>
-        <%=event.venue.name %>, 
-        <%=event.datetime_local%>
-      </li>
-    <% end %>
-  </ul>
+  <%= render @artist.events %>
 </div>
+
+
+<%= @artist.embed(@artist.find_id) %>
