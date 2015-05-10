@@ -1,23 +1,85 @@
-<h1>WELCOME</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<h2><%= link_to "Here are a bunch of shows", '/events' %></h2>
 
-<%= form_tag ("/events/random") do %>
-<%= submit_tag("Give me a random show") %>
-<% end %>
+<head>
+  <title>ConcertCurator</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
 
-<div> 
-  <%= form_tag ("/events/random") do %>
-  <%= submit_tag("Under 20 bucks") %>
-  <% end %>
-</div>
+ <!--  <div class="row">
+    <div class="col-sm-4">
+      <h3>Column 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div> -->
+<body>
 
-<div> 
-  <%= form_tag ("/events/random") do %>
-  <%= submit_tag("TONIGHT!!!") %>
-  <% end %>
-</div>
+ <div id="main-container" class="container-fluid">
 
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1>ConcertCurator</h1>
+      <p>Your one-stop spot for the best rock shows in NY</p> 
+    </div>
+    </div>
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2><%= link_to "A WHOLE BUNCH OF UPCOMING EVENTS", '/events', class: 'btn btn-default btn-lg btn-block' %></h2>
+      </div>
+    </div>
+
+    <p></p>
+
+
+    <div class="row">
+      <div class="col-xs-4">
+          <%= link_to "Give me a random show", '/events/random', class: 'btn btn-success btn-lg' %>
+      </div>
+
+
+      <div class="col-xs-4">
+      <%= form_tag ("/events/random") do %>
+        <%= submit_tag "Under 20 bucks", :class => 'btn btn-success btn-lg'%>
+        <% end %>
+      </div>
+
+
+
+      <div class="col-xs-4">
+        <%= form_tag ("/events/random") do %>
+        <%= submit_tag "TONIGHT!!!", :class => 'btn btn-success btn-lg' %>
+        <% end %>
+      </div>
+  </div>
+  </div>
+
+<p>
+
+<% if @event %>
+<div class="well well-lg">
+<%= render partial: "event_details" %>
+
+
+<% end%>
+
+
+
+
+<div class="container text-center">
 <% if @has_genres %>
   <div> 
     <%= form_tag ("/events/random") do %>
@@ -25,13 +87,12 @@
       <%= hidden_field_tag "genre_ids[]", id %>
     <% end %> 
 
-    <%= submit_tag("Similar show") %>
+    <%= submit_tag "Similar show", :class => 'btn btn-success'  %>
     <% end %>
   </div>
 <% end %>
-
-<% if @event %>
-
-<%= render partial: "event_details" %>
-
-<% end%>
+</div>
+</div>
+</div>
+</body>
+</html>

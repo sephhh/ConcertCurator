@@ -1,23 +1,28 @@
+<div class="text-center">
 <h1><%= @event.title %></h1>
 
-<%=@event.pretty_date%>
-
-<% if @event.average_price %>
-<div class="price"><%= number_to_currency(@event.average_price)%></div>
-<% end %>
-
-<h3>Artists:</h3>
-<ul>
-<% @event.artists.each do |artist| %>
-    <li><%=link_to artist.name, artist %> <%= artist.pretty_genres%></li>
-<% end %>
-
-</ul>
+<h4><%=@event.pretty_date%></h4>
+</div>
 
 
+<div id="main-container" class="container-fluid">
+  <% if @event.average_price %>
+  <div class="price"><%= number_to_currency(@event.average_price)%></div>
+  <% end %>
 
-<h3>Venue:</h3> 
-<strong><%= link_to @event.venue.name, @event.venue %></strong>
-<%= @event.venue.address%>
-<%= @event.venue.extended_address%>
-  
+
+  <h2>Artists:</h2>
+  <ul>
+  <% @event.artists.each do |artist| %>
+      <li><%=link_to artist.name, artist %> <%= artist.pretty_genres%></li>
+  <% end %>
+
+  </ul>
+
+
+
+  <h2>Venue:</h2> 
+  <strong><%= link_to @event.venue.name, @event.venue %></strong>
+  <%= @event.venue.address%>
+  <%= @event.venue.extended_address%>
+</div>

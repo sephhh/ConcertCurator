@@ -1,13 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <title>ConcertCurator</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<body>
 <div class="event-listing">
      
-
       <strong><%= link_to event.venue.name, event.venue %></strong>, 
       <% event.artists.each do |artist| %>
         <%=link_to artist.name, artist %>
         <% end %>
       <%= event.venue.display_location%>
       <%=event.pretty_date%>
+   <!--    <i class="fa fa-music"></i> -->
       <%=link_to "More info", event %>
+         <i class="fa fa-music"></i>
+  
 
+</body>
     
 </div>
+
+</html>
+

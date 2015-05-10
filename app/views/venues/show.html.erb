@@ -1,8 +1,23 @@
-<h1><%= @venue.name %></h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<%= @venue.address %>
-<%= @venue.extended_address %>
 
+<head>
+  <title>ConcertCurator</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<div class="text-center">
+  <h1><%= @venue.name %></h1>
+
+
+  <h4>
+  <%= @venue.address %>
+  <%= @venue.extended_address %>
+  </h4>
+</div>
+
+<div id="main-container" class="container-fluid">
 <h2>Upcoming Events</h2>
 
 <ul>
@@ -40,7 +55,8 @@
     $(document).ready(ready)
     $(document).on('page:load', ready)
   </script>
+</div>
 
-
+</html>
 
 

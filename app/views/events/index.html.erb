@@ -1,11 +1,18 @@
-<h1>Events</h1>
 
+
+<div class="text-center">
+<h1>Events</h1>
+</div>
+
+
+<div id="main-container" class="container-fluid">
 <% @events.group_by(&:week).each do |week, week_events| %>
   <div id="week">
-    <h2>Week <%= week %></h2>
+    <h2> Week <%= week %> </h2>
       <% week_events.group_by(&:day).each do |day, day_events| %>
       <h3>Day <%= day %></h3>
       <%= render :partial => 'event', :collection => day_events %>
     <% end %>
   </div>
 <% end %>
+</div>
