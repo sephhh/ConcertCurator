@@ -23,17 +23,12 @@ class Artist < ActiveRecord::Base
     hash = JSON.load(open(youtube_basic+artist_name_query+num_results+key_string))
 
     hash["items"].first["id"]["videoId"]
-    # youtube_id = "AISD0cupGBY"
     # Based off the artist's name, makes a query to the youtube API
     # From the result, grab the 'video_id' from the first video
   end
 
   def embed(youtube_id)
-
-    # Pass Youtube video id like example below:
-      #   def embed(youtube_url)
-        #   youtube_id = youtube_url.split("=").last
-      content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{youtube_id}")      #   end
+    content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{youtube_id}", :class => "embed-responsive-item")  
   end
 
 end
