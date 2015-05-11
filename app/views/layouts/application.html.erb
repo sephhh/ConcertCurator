@@ -19,12 +19,37 @@
 
 </head>
 <body>
-<nav>
-  <%= link_to "Home", root_path%>
-  <%= link_to "Events", events_path%>
-  <%= link_to "Artists", artists_path%>
-  <%= link_to "Venues", venues_path%>
+
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-">
+        <span class="sr-only">Toggle</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../">ConcertCurator</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li><%= link_to "Events", events_path %> <span class="sr-only">(current)</span></li>
+
+        <li><%= link_to "Artists", artists_path %> <span class="sr-only">(current)</span></li>
+
+        <li><%= link_to "Venues", venues_path %> <span class="sr-only">(current)</span></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       <li><a href="" target="_blank">Open in new tab</a></li> 
+       <!-- <li><a href="/" target="_blank">Open in new tab</a></li> -->
+      </ul>
+    </div>
+  </div>
 </nav>
+
 
 <%= yield %>
 

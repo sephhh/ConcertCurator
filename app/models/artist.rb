@@ -33,8 +33,7 @@ class Artist < ActiveRecord::Base
     # Pass Youtube video id like example below:
       #   def embed(youtube_url)
         #   youtube_id = youtube_url.split("=").last
-      content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{youtube_id}")
-      #   end
+      content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{youtube_id}")      #   end
   end
 
 end

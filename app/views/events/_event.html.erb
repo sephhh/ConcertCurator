@@ -13,6 +13,8 @@
       <strong><%= link_to event.venue.name, event.venue %></strong>, 
       <% event.artists.each do |artist| %>
         <%=link_to artist.name, artist %>
+        <!-- <i class="fa fa-circle-o"></i> -->
+        <i class="fa fa-angle-right fa-lg"></i>
         <% end %>
       <%= event.venue.display_location%>
       <%=event.pretty_date%>
