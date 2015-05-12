@@ -31,7 +31,8 @@ class EventsController < ApplicationController
     @event = cheap_events.sample
   elsif params["commit"] == "TONIGHT!!!"
     today = Time.now.strftime('%d')
-    tonight_events = Event.all.select { |event| event.day == today }
+    this_month = Time.now.strftime('%b')
+    tonight_events = Event.all.select { |event| event.day == today && event.month == this_month}
     @event = tonight_events.sample
   elsif params["commit"] == "Similar show"
     genre_ids = params["genre_ids"].collect {|genre_id| genre_id.to_i}

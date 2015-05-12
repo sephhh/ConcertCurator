@@ -24,6 +24,9 @@ class Event < ActiveRecord::Base
   def day
     self.datetime_local.strftime('%d')
   end
+  def month
+    self.datetime_local.strftime('%b')
+  end
   def month_day
     self.datetime_local.strftime('%b') + " " + self.day
   end
