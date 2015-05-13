@@ -3,5 +3,7 @@
 ConcertCurator lists concerts in the New York City area. Hopefully coming to a domain soon. For now, feel free to download and run with:
 
 rake db:migrate
+
 rake db:seed
+
 rails s
