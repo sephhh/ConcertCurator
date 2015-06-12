@@ -44,7 +44,7 @@ class EventsController < ApplicationController
     @event = Event.find(id)
   end
 
-  if @event.has_genres?
+  if @event && @event.has_genres?
     @genre_ids = []
     @event.artists.each do |artist|
       @genre_ids.concat(artist.genres.pluck(:id))
