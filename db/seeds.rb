@@ -48,9 +48,9 @@ def create_genre(name)
 end
 
 
-
+key = ENV["SEATGEEK_ID"]
 base_url = "http://api.seatgeek.com/2/events"
-query = "?geoip=true&per_page=100&range=25mi&taxonomies.name=concert"
+query = "?geoip=true&per_page=100&range=25mi&taxonomies.name=concert&client_id=#{key}"
 
 def seed(base_url, query, page)
   page_string = "&page=#{page}"
