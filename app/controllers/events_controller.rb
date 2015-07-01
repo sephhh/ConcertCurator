@@ -40,7 +40,7 @@ class EventsController < ApplicationController
     @event = similar_shows.sample
   else 
     # if params["commit"] == "Give me a random show"
-    id = rand(1..Event.count)
+    id = rand(Event.first.id..Event.last.id)
     @event = Event.find(id)
   end
 
