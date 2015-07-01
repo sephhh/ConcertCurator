@@ -15,4 +15,5 @@
 /log/*s
 !/log/.keep
 /tmp
+log/development.log
 .env
